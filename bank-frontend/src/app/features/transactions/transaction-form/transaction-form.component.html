@@ -1,0 +1,85 @@
+<div class="form-page">
+  <!-- Header -->
+  <div class="form-page__header">
+    <h2 class="page__title">New Transaction</h2>
+    <button class="btn btn--secondary btn--icon" type="button" (click)="onCancel()" aria-label="Close">
+      &#x2715; Close
+    </button>
+  </div>
+
+  <!-- Skeleton overlay -->
+  <div class="form-page__body" style="position: relative;">
+    @if (loading) {
+      <app-skeleton [rows]="4"></app-skeleton>
+    }
+
+    <form class="transaction-form" [formGroup]="form" (ngSubmit)="onSave()" novalidate>
+
+      <!-- Account Number -->
+      <div class="form-group">
+        <label class="form-label" for="accountNumber">Account Number <span class="required">*</span></label>
+        <input id="accountNumber" class="input" [class.input--error]="isTouchedInvalid('accountNumber')"
+          type="text" maxlength="6" formControlName="accountNumber" />
+        @if (hasError('accountNumber', 'required')) {
+          <span class="form-error">Account number is required.</span>
+        }
+        @if (hasError('accountNumber', 'minlength') || hasError('accountNumber', 'maxlength')) {
+          <span class="form-error">Account number must be exactly 6 digits.</span>
+        }
+        @if (hasError('accountNumber', 'onlyDigits')) {
+          <span class="form-error">Only digits are allowed.</span>
+        }
+        @if (hasError('accountNumber', 'allZeros')) {
+          <span class="form-error">Account number cannot be all zeros.</span>
+        }
+      </div>
+
+      <!-- Value -->
+      <div class="form-group">
+        <label class="form-label" for="value">Value <span class="required">*</span></label>
+        <input id="value" class="input" [class.input--error]="isTouchedInvalid('value')"
+          type="number" step="0.01" formControlName="value" />
+        @if (hasError('value', 'required')) {
+          <span class="form-error">Value is required.</span>
+        }
+        @if (hasError('value', 'min')) {
+          <span class="form-error">Minimum value is -999,999,999,999.99.</span>
+        }
+        @if (hasError('value', 'max')) {
+          <span class="form-error">Maximum value is 999,999,999,999.99.</span>
+        }
+        @if (hasError('value', 'twoDecimals')) {
+          <span class="form-error">Only up to 2 decimal places are allowed.</span>
+        }
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label class="form-label" for="description">Description <span class="required">*</span></label>
+        <input id="description" class="input" [class.input--error]="isTouchedInvalid('description')"
+          type="text" maxlength="50" formControlName="description" />
+        @if (hasError('description', 'required')) {
+          <span class="form-error">Description is required.</span>
+        }
+        @if (hasError('description', 'maxlength')) {
+          <span class="form-error">Maximum 50 characters.</span>
+        }
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button class="btn btn--primary" type="submit">Create</button>
+        <button class="btn btn--secondary" type="button" (click)="onCancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Error dialog -->
+  @if (errorMessage) {
+    <app-error-dialog
+      [message]="errorMessage"
+      [detail]="errorDetail"
+      (closed)="onCloseError()"
+    ></app-error-dialog>
+  }
+</div>

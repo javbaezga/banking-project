@@ -1,0 +1,9 @@
+<div class="layout">
+  <app-header></app-header>
+  <div class="layout__body" [class.layout__body--collapsed]="sidebarState.isCollapsed$ | async">
+    <app-sidebar></app-sidebar>
+    <main class="layout__content" role="main">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="form-page">
+  <!-- Header -->
+  <div class="form-page__header">
+    <h2 class="page__title">Bank Statement</h2>
+    <button class="btn btn--secondary btn--icon" type="button" routerLink="/reports" aria-label="Close">
+      &#x2715; Close
+    </button>
+  </div>
+
+  <!-- Body -->
+  <div class="form-page__body" style="position: relative;">
+    @if (searchingCustomer) {
+      <app-skeleton [rows]="4"></app-skeleton>
+    }
+
+    <form class="filter-form" [formGroup]="form" (ngSubmit)="onGenerate()" novalidate>
+
+      <!-- Customer lookup -->
+      <div class="form-group">
+        <label class="form-label">Customer <span class="required">*</span></label>
+        <div class="customer-search">
+          <div class="customer-search__input-wrapper">
+            <input
+              class="input customer-search__input"
+              [class.input--error]="isTouchedInvalid('customerId') && !selectedCustomer"
+              type="text"
+              maxlength="10"
+              placeholder="Enter ID Number to search"
+              [(ngModel)]="customerIdNumberInput"
+              [ngModelOptions]="{standalone: true}"
+            />
+            @if (customerIdNumberInput) {
+              <button class="customer-search__clear" type="button" aria-label="Clear customer" (click)="onClearCustomer()">
+                &#x2715;
+              </button>
+            }
+          </div>
+          <button class="btn btn--secondary" type="button" (click)="onSearchCustomer()">
+            Search
+          </button>
+          <button class="btn btn--primary" type="button" [disabled]="!foundCustomer" (click)="onSelectCustomer()">
+            Select
+          </button>
+        </div>
+        @if (foundCustomer) {
+          <div class="customer-found customer-found--pending">
+            <span class="customer-found__label">Found:</span>
+            <span class="customer-found__name">{{ foundCustomer.fullName }}</span>
+            <span class="customer-found__id">&mdash; {{ foundCustomer.idNumber }}</span>
+          </div>
+        }
+        @if (selectedCustomer) {
+          <div class="customer-found">
+            <span class="customer-found__label">Selected:</span>
+            <span class="customer-found__name">{{ selectedCustomer.fullName }}</span>
+            <span class="customer-found__id">&mdash; {{ selectedCustomer.idNumber }}</span>
+          </div>
+        }
+        @if (hasError('customerId', 'required') && !selectedCustomer) {
+          <span class="form-error">Customer is required. Search by ID Number.</span>
+        }
+      </div>
+
+      <!-- Start Date -->
+      <div class="form-group">
+        <label class="form-label" for="startDate">Start Date <span class="required">*</span></label>
+        <input
+          id="startDate"
+          class="input"
+          [class.input--error]="isTouchedInvalid('startDate')"
+          type="date"
+          formControlName="startDate"
+        />
+        @if (hasError('startDate', 'required')) {
+          <span class="form-error">Start date is required.</span>
+        }
+        @if (hasError('startDate', 'dateFormat')) {
+          <span class="form-error">Start date must be in YYYY-MM-DD format.</span>
+        }
+      </div>
+
+      <!-- End Date -->
+      <div class="form-group">
+        <label class="form-label" for="endDate">End Date <span class="required">*</span></label>
+        <input
+          id="endDate"
+          class="input"
+          [class.input--error]="isTouchedInvalid('endDate')"
+          type="date"
+          formControlName="endDate"
+        />
+        @if (hasError('endDate', 'required')) {
+          <span class="form-error">End date is required.</span>
+        }
+        @if (hasError('endDate', 'dateFormat')) {
+          <span class="form-error">End date must be in YYYY-MM-DD format.</span>
+        }
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button class="btn btn--primary" type="submit">
+          Generate
+        </button>
+        <button class="btn btn--delete" type="button" (click)="onClear()">
+          &#x2715; Clear
+        </button>
+        <button class="btn btn--secondary" type="button" routerLink="/reports">
+          Cancel
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Error dialog -->
+  @if (errorMessage) {
+    <app-error-dialog
+      [message]="errorMessage"
+      [detail]="errorDetail"
+      (closed)="onCloseError()"
+    ></app-error-dialog>
+  }
+</div>

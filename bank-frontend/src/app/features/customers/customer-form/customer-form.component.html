@@ -1,0 +1,173 @@
+<div class="form-page">
+  <!-- Header -->
+  <div class="form-page__header">
+    <h2 class="page__title">{{ isEditMode ? 'Edit Customer' : 'New Customer' }}</h2>
+    <button class="btn btn--secondary btn--icon" type="button" (click)="onCancel()" aria-label="Close">
+      &#x2715; Close
+    </button>
+  </div>
+
+  <!-- Skeleton overlay -->
+  <div class="form-page__body" style="position: relative;">
+    @if (loading) {
+      <app-skeleton [rows]="8"></app-skeleton>
+    }
+
+    <form class="customer-form" [formGroup]="form" (ngSubmit)="onSave()" novalidate>
+
+      <!-- Full Name -->
+      <div class="form-group">
+        <label class="form-label" for="fullName">Full Name <span class="required">*</span></label>
+        <input id="fullName" class="input" [class.input--error]="isTouchedInvalid('fullName')"
+          type="text" maxlength="100" formControlName="fullName" />
+        @if (hasError('fullName', 'required')) {
+          <span class="form-error">Full name is required.</span>
+        }
+        @if (hasError('fullName', 'maxlength')) {
+          <span class="form-error">Maximum 100 characters.</span>
+        }
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label class="form-label" for="gender">Gender <span class="required">*</span></label>
+        <select id="gender" class="select" [class.input--error]="isTouchedInvalid('gender')"
+          formControlName="gender">
+          @for (opt of genderOptions; track opt.value) {
+            <option [value]="opt.value">{{ opt.label }}</option>
+          }
+        </select>
+        @if (hasError('gender', 'required')) {
+          <span class="form-error">Gender is required.</span>
+        }
+      </div>
+
+      <!-- Age -->
+      <div class="form-group">
+        <label class="form-label" for="age">Age <span class="required">*</span></label>
+        <input id="age" class="input" [class.input--error]="isTouchedInvalid('age')"
+          type="number" min="13" max="120" formControlName="age" />
+        @if (hasError('age', 'required')) {
+          <span class="form-error">Age is required.</span>
+        }
+        @if (hasError('age', 'min')) {
+          <span class="form-error">Minimum age is 13.</span>
+        }
+        @if (hasError('age', 'max')) {
+          <span class="form-error">Maximum age is 120.</span>
+        }
+      </div>
+
+      <!-- Id Number -->
+      <div class="form-group">
+        <label class="form-label" for="idNumber">Id Number <span class="required">*</span></label>
+        <input id="idNumber" class="input" [class.input--error]="isTouchedInvalid('idNumber')"
+          type="text" maxlength="10" formControlName="idNumber" />
+        @if (hasError('idNumber', 'required')) {
+          <span class="form-error">Id number is required.</span>
+        }
+        @if (hasError('idNumber', 'pattern')) {
+          <span class="form-error">Must be exactly 10 digits.</span>
+        }
+        @if (hasError('idNumber', 'allZeros')) {
+          <span class="form-error">Id number cannot be all zeros.</span>
+        }
+      </div>
+
+      <!-- Address -->
+      <div class="form-group">
+        <label class="form-label" for="address">Address <span class="required">*</span></label>
+        <input id="address" class="input" [class.input--error]="isTouchedInvalid('address')"
+          type="text" maxlength="255" formControlName="address" />
+        @if (hasError('address', 'required')) {
+          <span class="form-error">Address is required.</span>
+        }
+        @if (hasError('address', 'maxlength')) {
+          <span class="form-error">Maximum 255 characters.</span>
+        }
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label class="form-label" for="phone">Phone <span class="required">*</span></label>
+        <input id="phone" class="input" [class.input--error]="isTouchedInvalid('phone')"
+          type="text" maxlength="10" formControlName="phone" />
+        @if (hasError('phone', 'required')) {
+          <span class="form-error">Phone is required.</span>
+        }
+        @if (hasError('phone', 'minlength')) {
+          <span class="form-error">Minimum 9 digits.</span>
+        }
+        @if (hasError('phone', 'maxlength')) {
+          <span class="form-error">Maximum 10 digits.</span>
+        }
+        @if (hasError('phone', 'onlyDigits')) {
+          <span class="form-error">Only digits are allowed.</span>
+        }
+        @if (hasError('phone', 'allZeros')) {
+          <span class="form-error">Phone cannot be all zeros.</span>
+        }
+      </div>
+
+      <!-- Username -->
+      <div class="form-group">
+        <label class="form-label" for="username">Username <span class="required">*</span></label>
+        <input id="username" class="input" [class.input--error]="isTouchedInvalid('username')"
+          type="text" maxlength="25" formControlName="username" />
+        @if (hasError('username', 'required')) {
+          <span class="form-error">Username is required.</span>
+        }
+        @if (hasError('username', 'minlength')) {
+          <span class="form-error">Minimum 8 characters.</span>
+        }
+        @if (hasError('username', 'maxlength')) {
+          <span class="form-error">Maximum 25 characters.</span>
+        }
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label class="form-label" for="password">
+          Password
+          @if (!isEditMode) { <span class="required">*</span> }
+          @if (isEditMode) { <span class="optional">(optional)</span> }
+        </label>
+        <input id="password" class="input" [class.input--error]="isTouchedInvalid('password')"
+          type="password" maxlength="50" formControlName="password" autocomplete="new-password" />
+        @if (hasError('password', 'required')) {
+          <span class="form-error">Password is required.</span>
+        }
+        @if (hasError('password', 'minlength')) {
+          <span class="form-error">Minimum 8 characters.</span>
+        }
+        @if (hasError('password', 'maxlength')) {
+          <span class="form-error">Maximum 50 characters.</span>
+        }
+      </div>
+
+      <!-- Status -->
+      <div class="form-group form-group--inline">
+        <label class="form-label" for="status">Status</label>
+        <label class="toggle">
+          <input id="status" type="checkbox" formControlName="status" />
+          <span class="toggle__track"></span>
+          <span class="toggle__label">{{ form.get('status')?.value ? 'Enabled' : 'Disabled' }}</span>
+        </label>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button class="btn btn--primary" type="submit">Save</button>
+        <button class="btn btn--secondary" type="button" (click)="onCancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Error dialog -->
+  @if (errorMessage) {
+    <app-error-dialog
+      [message]="errorMessage"
+      (closed)="onCloseError()"
+    ></app-error-dialog>
+  }
+</div>

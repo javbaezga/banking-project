@@ -1,0 +1,40 @@
+server:
+  port: 8080
+info:
+  project:
+    version: 1.0.0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, loggers
+spring:
+  application:
+    name: bank
+  main:
+    allow-bean-definition-overriding: on
+    lazy-initialization: on
+  web-flux:
+    base-path: /bank/v1
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://127.0.0.1:5432/bank}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:1234}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+logging:
+  config: classpath:logback.xml
+account:
+  account:
+    daily-quota: 1000
+  scheduling:
+    cron: 0 0 0 * * *
+    zone: America/Guayaquil

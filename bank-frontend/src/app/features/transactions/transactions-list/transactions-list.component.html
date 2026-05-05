@@ -1,0 +1,127 @@
+<div class="crud-page">
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="btn btn--primary" type="button" (click)="onCreate()">
+      + Create
+    </button>
+    <button class="btn btn--secondary" type="button" (click)="onRefresh()">
+      &#8635; Refresh
+    </button>
+    <div class="toolbar__page-size">
+      <label for="pageSize" class="toolbar__label">Page size:</label>
+      <select
+        id="pageSize"
+        class="select"
+        [value]="pageSize"
+        (change)="onPageSizeChange(+$any($event.target).value)"
+      >
+        @for (opt of pageSizeOptions; track opt) {
+          <option [value]="opt" [selected]="opt === pageSize">{{ opt }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <!-- Search bar -->
+  <div class="search-bar">
+    <div class="search-bar__wrapper">
+      <input
+        class="input search-bar__input"
+        type="text"
+        maxlength="50"
+        placeholder="Search"
+        [value]="searchText"
+        (input)="onSearchChange($any($event.target).value)"
+      />
+      @if (searchText) {
+        <button class="search-bar__clear" type="button" aria-label="Clear search" (click)="onSearchChange('')">
+          &#x2715;
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid-wrapper" [class.grid-wrapper--loading]="loading">
+    @if (loading) {
+      <app-skeleton [rows]="pageSize > 10 ? 10 : pageSize"></app-skeleton>
+    }
+
+    <table class="grid">
+      <thead>
+        <tr>
+          <th class="grid__th grid__th--sortable" [class.grid__th--sorted]="isSortActive('id')" (click)="onSort('id')">
+            Id <span class="sort-icon">{{ getSortIcon('id') }}</span>
+          </th>
+          <th class="grid__th">Account Number</th>
+          <th class="grid__th">Customer</th>
+          <th class="grid__th grid__th--sortable" [class.grid__th--sorted]="isSortActive('date')" (click)="onSort('date')">
+            Date <span class="sort-icon">{{ getSortIcon('date') }}</span>
+          </th>
+          <th class="grid__th">Type</th>
+          <th class="grid__th">Value</th>
+          <th class="grid__th">Description</th>
+          <th class="grid__th">Balance</th>
+          <th class="grid__th">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (transactions.length === 0 && !loading) {
+          <tr>
+            <td class="grid__td grid__td--empty" colspan="9">No transactions found.</td>
+          </tr>
+        }
+        @for (tx of transactions; track tx.id) {
+          <tr class="grid__row">
+            <td class="grid__td">{{ tx.id }}</td>
+            <td class="grid__td">{{ tx.account.number }}</td>
+            <td class="grid__td">
+              <span class="customer-name">{{ tx.account.customer.fullName }}</span>
+              <span class="customer-id">&mdash; {{ tx.account.customer.idNumber }}</span>
+            </td>
+            <td class="grid__td">{{ tx.date }}</td>
+            <td class="grid__td">
+              <span class="badge" [class.badge--credit]="tx.type === 'CREDIT'" [class.badge--debit]="tx.type === 'DEBIT'">
+                {{ mapType(tx.type) }}
+              </span>
+            </td>
+            <td class="grid__td grid__td--number">{{ tx.value | currency:'USD':'symbol':'1.2-2' }}</td>
+            <td class="grid__td">{{ tx.description }}</td>
+            <td class="grid__td grid__td--number">{{ tx.balance | currency:'USD':'symbol':'1.2-2' }}</td>
+            <td class="grid__td">
+              <span class="badge" [class.badge--enabled]="tx.status" [class.badge--disabled]="!tx.status">
+                {{ mapStatus(tx.status) }}
+              </span>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <div class="pagination__side">
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage === 0" (click)="goToFirstPage()">&#8810; First</button>
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage === 0" (click)="goToPreviousPage()">&#8249; Prev</button>
+    </div>
+    <div class="pagination__center">
+      <span class="pagination__page">Page {{ currentPage + 1 }} / {{ totalPages || 1 }}</span>
+      <span class="pagination__separator">|</span>
+      <span class="pagination__total">{{ totalElements }} record(s)</span>
+    </div>
+    <div class="pagination__side">
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage >= totalPages - 1" (click)="goToNextPage()">Next &#8250;</button>
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage >= totalPages - 1" (click)="goToLastPage()">Last &#8811;</button>
+    </div>
+  </div>
+
+  <!-- Error dialog -->
+  @if (errorMessage) {
+    <app-error-dialog
+      [message]="errorMessage"
+      [detail]="errorDetail"
+      (closed)="onCloseError()"
+    ></app-error-dialog>
+  }
+</div>

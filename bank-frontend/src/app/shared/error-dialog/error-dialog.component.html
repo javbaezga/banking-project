@@ -1,0 +1,12 @@
+<div class="dialog-backdrop" role="alertdialog" aria-modal="true" aria-labelledby="error-message">
+  <div class="dialog dialog--error">
+    <div class="dialog__icon">&#9888;</div>
+    <p class="dialog__message" id="error-message">{{ message }}</p>
+    @if (detail) {
+      <p class="dialog__detail"><strong>Detail:</strong> {{ detail }}</p>
+    }
+    <div class="dialog__actions">
+      <button class="btn btn--primary" type="button" (click)="onClose()">Close</button>
+    </div>
+  </div>
+</div>

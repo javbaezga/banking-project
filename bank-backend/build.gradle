@@ -1,0 +1,154 @@
+import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
+
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'org.springframework.boot' version '3.5.14'
+    id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.openapi.generator' version '7.22.0'
+}
+
+def packageName = 'com.banking'
+def dirName = 'com/banking'
+
+springBoot {
+    mainClass = "${packageName}.BankMainApplication"
+}
+
+group = "${packageName}"
+version = '1.0.0'
+
+def javaVersion = JavaVersion.VERSION_21
+
+java {
+    sourceCompatibility = javaVersion
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(javaVersion.majorVersion)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url = 'https://repo.spring.io/milestone'
+    }
+}
+
+ext {
+    mapstructVersion = '1.6.3'
+    lombokVersion = '1.18.46'
+}
+
+dependencies {
+    // Spring
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    // OpenAPI
+    implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:2.8.17'
+
+    // Lombok
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // Mapstruct
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+
+    // Postgresql
+    implementation 'org.postgresql:postgresql:42.7.11'
+
+    // OpenPDF
+    implementation 'com.github.librepdf:openpdf:1.4.2'
+
+    // Test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.mockito:mockito-inline:5.2.0'
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'com.h2database:h2:2.4.240'
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+tasks.register('buildErrorSchemas', GenerateTask) {
+    generatorName = 'spring'
+    inputSpec = file("${rootDir}/src/main/resources/openapi.yaml")
+    outputDir = file("${buildDir}/generated")
+    apiPackage = "${packageName}.infrastructure.input.adapter.rest.error"
+    modelPackage = "${packageName}.infrastructure.input.adapter.rest.error.bean"
+    library = 'spring-boot'
+    configOptions.putAll([
+        skipDefaultInterface                    : 'false',
+        useSpringBoot3                          : 'true',
+        useJakartaEe                            : 'true',
+        serializableModel                       : 'true',
+        dateLibrary                             : 'java8',
+        openApiNullable                         : 'false',
+        reactive                                : 'true',
+        apiFirst                                : 'false',
+        delegatePattern                         : 'true',
+        disallowAdditionalPropertiesIfNotPresent: 'true',
+        interfaceOnly                           : 'true',
+        sourceFolder                            : 'src/main/java',
+        basePackage                             : 'com.banking',
+        configPackage                           : "${packageName}.infrastructure.input.adapter.rest.configuration"
+    ])
+}
+
+compileJava {
+    dependsOn buildErrorSchemas
+    options.compilerArgs += [
+        '-Amapstruct.suppressGeneratorTimestamp=true',
+        '-Amapstruct.suppressGeneratorVersionInfoComment=true',
+        '-Amapstruct.verbose=true',
+        '-Amapstruct.defaultComponentModel=spring'
+    ]
+}
+
+sourceSets.main.java.srcDirs = ["${buildDir}/generated/src/main/java", 'src/main/java']
+
+springBoot {
+    buildInfo()
+}
+
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+    systemProperty 'spring.profiles.active', 'testing'
+}
+
+jacocoTestReport {
+    dependsOn test
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                "${dirName}/domain/mapper/*Impl.class",
+                "${dirName}/infrastructure/input/adapter/job/mapper/*Impl.class",
+                "${dirName}/infrastructure/input/adapter/rest/error/ApiUtil.class",
+                "${dirName}/infrastructure/input/adapter/rest/error/bean/*.class",
+                "${dirName}/infrastructure/input/adapter/rest/mapper/*Impl.class",
+                "${dirName}/infrastructure/output/adapter/mapper/*Impl.class",
+                "${dirName}/infrastructure/output/repository/mapper/*Impl.class"
+            ])
+        }))
+    }
+    reports {
+        xml.required = true
+        xml.destination file("${buildDir}/jacoco/test.xml")
+        html.destination file("${buildDir}/jacoco/index.html")
+        html.required = true
+        csv.required = true
+    }
+}

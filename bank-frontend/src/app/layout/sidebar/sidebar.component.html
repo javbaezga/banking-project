@@ -1,0 +1,74 @@
+<nav class="sidebar" [class.sidebar--collapsed]="sidebarState.isCollapsed$ | async" aria-label="Main navigation">
+  <ul class="sidebar__menu">
+    @for (item of navItems; track item.route) {
+      <li class="sidebar__item">
+        @if (item.children && item.children.length > 0) {
+          <!-- Item with submenu -->
+          <button
+            class="sidebar__link sidebar__link--expandable"
+            [class.sidebar__link--active]="isRouteActive(item.route)"
+            type="button"
+            [attr.aria-label]="item.label"
+            [title]="(sidebarState.isCollapsed$ | async) ? item.label : ''"
+            (click)="toggleExpand(item)"
+          >
+            <span class="sidebar__icon" [innerHTML]="item.icon"></span>
+            <span class="sidebar__label">{{ item.label }}</span>
+            <span class="sidebar__chevron" [class.sidebar__chevron--open]="isExpanded(item.label)">&#8250;</span>
+          </button>
+          @if (isExpanded(item.label) && !(sidebarState.isCollapsed$ | async)) {
+            <ul class="sidebar__submenu">
+              @for (child of item.children; track child.route) {
+                <li class="sidebar__subitem">
+                  <a
+                    class="sidebar__sublink"
+                    [routerLink]="child.route"
+                    routerLinkActive="sidebar__sublink--active"
+                    [attr.aria-label]="child.label"
+                  >
+                    @if (child.icon) {
+                      <span class="sidebar__subicon" [innerHTML]="child.icon"></span>
+                    }
+                    {{ child.label }}
+                  </a>
+                </li>
+              }
+            </ul>
+          }
+          <!-- Collapsed flyout submenu (icon-only) -->
+          @if (sidebarState.isCollapsed$ | async) {
+            <ul class="sidebar__flyout">
+              @for (child of item.children; track child.route) {
+                <li class="sidebar__flyout-item">
+                  <a
+                    class="sidebar__flyout-link"
+                    [routerLink]="child.route"
+                    routerLinkActive="sidebar__flyout-link--active"
+                    [title]="child.label"
+                    [attr.aria-label]="child.label"
+                  >
+                    @if (child.icon) {
+                      <span class="sidebar__flyout-icon" [innerHTML]="child.icon"></span>
+                    }
+                  </a>
+                </li>
+              }
+            </ul>
+          }
+        } @else {
+          <!-- Regular item -->
+          <a
+            class="sidebar__link"
+            [routerLink]="item.route"
+            routerLinkActive="sidebar__link--active"
+            [attr.aria-label]="item.label"
+            [title]="(sidebarState.isCollapsed$ | async) ? item.label : ''"
+          >
+            <span class="sidebar__icon" [innerHTML]="item.icon"></span>
+            <span class="sidebar__label">{{ item.label }}</span>
+          </a>
+        }
+      </li>
+    }
+  </ul>
+</nav>

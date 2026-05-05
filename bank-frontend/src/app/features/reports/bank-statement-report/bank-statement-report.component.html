@@ -1,0 +1,127 @@
+<div class="crud-page">
+  <!-- Download overlay -->
+  @if (downloading) {
+    <div class="download-overlay">
+      <div class="download-overlay__box">
+        <div class="download-overlay__spinner"></div>
+        <span class="download-overlay__text">Generating PDF&hellip;</span>
+      </div>
+    </div>
+  }
+
+  <!-- Header -->
+  <div class="report-header">
+    <div class="report-header__info">
+      <h2 class="page__title">Bank Statement</h2>
+      @if (customerName) {
+        <span class="report-header__customer">{{ customerName }}</span>
+      }
+      @if (startDate && endDate) {
+        <span class="report-header__dates">{{ startDate }} &mdash; {{ endDate }}</span>
+      }
+    </div>
+    <button class="btn btn--secondary btn--icon" type="button" routerLink="/reports/bank-statement" aria-label="Close">
+      &#x2715; Close
+    </button>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="btn btn--primary" type="button" [disabled]="downloading" (click)="onDownload()">
+      &#8615; Download PDF
+    </button>
+    <button class="btn btn--secondary" type="button" (click)="onRefresh()">
+      &#8635; Refresh
+    </button>
+    <div class="toolbar__page-size">
+      <label for="pageSize" class="toolbar__label">Page size:</label>
+      <select
+        id="pageSize"
+        class="select"
+        [value]="pageSize"
+        (change)="onPageSizeChange(+$any($event.target).value)"
+      >
+        @for (opt of pageSizeOptions; track opt) {
+          <option [value]="opt" [selected]="opt === pageSize">{{ opt }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid-wrapper" [class.grid-wrapper--loading]="loading">
+    @if (loading) {
+      <app-skeleton [rows]="pageSize > 10 ? 10 : pageSize"></app-skeleton>
+    }
+
+    <table class="grid">
+      <thead>
+        <tr>
+          <th class="grid__th">Id</th>
+          <th class="grid__th">Date</th>
+          <th class="grid__th">Customer</th>
+          <th class="grid__th">Account Number</th>
+          <th class="grid__th">Type</th>
+          <th class="grid__th">Initial Balance</th>
+          <th class="grid__th">Status</th>
+          <th class="grid__th">Value</th>
+          <th class="grid__th">Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (statements.length === 0 && !loading) {
+          <tr>
+            <td class="grid__td grid__td--empty" colspan="9">No records found for the selected period.</td>
+          </tr>
+        }
+        @for (stmt of statements; track stmt.id) {
+          <tr class="grid__row">
+            <td class="grid__td">{{ stmt.id }}</td>
+            <td class="grid__td">{{ stmt.date }}</td>
+            <td class="grid__td">{{ stmt.customer }}</td>
+            <td class="grid__td">{{ stmt.accountNumber }}</td>
+            <td class="grid__td">
+              <span class="badge" [class.badge--credit]="stmt.type === 'C'" [class.badge--debit]="stmt.type === 'D'">
+                {{ stmt.type }}
+              </span>
+            </td>
+            <td class="grid__td grid__td--number">{{ stmt.initialBalance | currency:'USD':'symbol':'1.2-2' }}</td>
+            <td class="grid__td">
+              <span class="badge" [class.badge--enabled]="stmt.status" [class.badge--disabled]="!stmt.status">
+                {{ mapStatus(stmt.status) }}
+              </span>
+            </td>
+            <td class="grid__td grid__td--number">{{ stmt.value | currency:'USD':'symbol':'1.2-2' }}</td>
+            <td class="grid__td grid__td--number">{{ stmt.balance | currency:'USD':'symbol':'1.2-2' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <div class="pagination__side">
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage === 0" (click)="goToPage(0)">&#8810; First</button>
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage === 0" (click)="goToPage(currentPage - 1)">&#8249; Prev</button>
+    </div>
+    <div class="pagination__center">
+      <span class="pagination__page">Page {{ currentPage + 1 }} / {{ totalPages || 1 }}</span>
+      <span class="pagination__separator">|</span>
+      <span class="pagination__total">{{ totalElements }} record(s)</span>
+    </div>
+    <div class="pagination__side">
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage >= totalPages - 1" (click)="goToPage(currentPage + 1)">Next &#8250;</button>
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage >= totalPages - 1" (click)="goToPage(totalPages - 1)">Last &#8811;</button>
+    </div>
+  </div>
+
+  <!-- Error dialog -->
+  @if (errorMessage) {
+    <app-error-dialog
+      [message]="errorMessage"
+      [detail]="errorDetail"
+      (closed)="onCloseError()"
+    ></app-error-dialog>
+  }
+</div>

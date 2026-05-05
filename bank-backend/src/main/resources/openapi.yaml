@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: Bank
+  contact:
+    name: Javier Báez
+    email: javbaezga@hotmail.com
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    ErrorModel:
+      required:
+        - detail
+        - instance
+        - title
+        - type
+      type: object
+      properties:
+        title:
+          maximum: 50
+          type: string
+          description: |-
+            <sup><i>(ES)</i></sup> Mensaje de error técnico.
+            <br>
+            <sup><i>(EN)</i></sup> Technical error message
+          example: Internal Server.
+        detail:
+          maximum: 50
+          type: string
+          description: |-
+            <sup><i>(ES)</i></sup> Mensaje a presentar al cliente, o error a detalle del evento
+            <br>
+            <sup><i>(EN)</i></sup> Message to display to the client, or error detailing the event
+          example: "Se produjo un error interno, lo estamos revisando."
+        errors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ErrorList"
+        instance:
+          maximum: 50
+          type: string
+          description: |-
+            <sup><i>(ES)</i></sup> Código de catálogo de errores o Una referencia URI que identifique específicamente la aparición del problema.
+            <br>
+            <sup><i>(EN)</i></sup> Bug Catalog Code o A URI reference that specifically identifies the occurrence of the problem.
+          example: "0188"
+        type:
+          maximum: 100
+          type: string
+          description: |-
+            <sup><i>(ES)</i></sup> Una referencia URI que identifica el tipo de problema.
+            <br>
+            <sup><i>(EN)</i></sup> A URI reference that identifies the type of problem.
+          example: /v1/name/pathSuffix
+        resource:
+          type: string
+          description: |-
+            <sup><i>(ES)</i></sup> Recurso, Clase u objeto donde se genero el error.
+            <br>
+            <sup><i>(EN)</i></sup> Resource, Class or object where the error was generated.
+        component:
+          type: string
+          description: |-
+            <sup><i>(ES)</i></sup> Componente de la aplicación o transacción.
+            <br>
+            <sup><i>(EN)</i></sup> Application component or transaction.
+        backend:
+          type: string
+          description: |-
+            <sup><i>(ES)</i></sup> Código backend.
+            <br>
+            <sup><i>(EN)</i></sup> Backend code.
+    ErrorList:
+      properties:
+        code:
+          type: string
+          description: |-
+            <sup><i>(ES)</i></sup> Código de catálogo de errores.
+            <br>
+            <sup><i>(EN)</i></sup> Error catalog code.
+          example: "001"
+        message:
+          type: string
+          description: |-
+            <sup><i>(ES)</i></sup> Mensaje de error técnico.
+            <br>
+            <sup><i>(EN)</i></sup> Technical error message..
+          example: Bad Request
+        businessMessage:
+          type: string
+          description: |-
+            <sup><i>(ES)</i></sup> Mensaje de negocio.
+            <br>
+            <sup><i>(EN)</i></sup> Business message.
+          example: The xyz field is mandatory

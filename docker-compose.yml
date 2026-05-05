@@ -1,0 +1,66 @@
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: bank-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "1234"
+      POSTGRES_DB: bank
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bank"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./bank-backend
+      dockerfile: Dockerfile.dev
+    container_name: bank-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bank
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: "1234"
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://127.0.0.1:8080/bank/v1/actuator/health | grep -q '\"status\":\"UP\"' || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 8
+      start_period: 60s
+
+  frontend:
+    build:
+      context: ./bank-frontend
+      dockerfile: Dockerfile.dev
+    container_name: bank-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  db-seed:
+    image: postgres:16-alpine
+    container_name: bank-db-seed
+    environment:
+      PGPASSWORD: "1234"
+    volumes:
+      - ./data.sql:/seed/data.sql:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+    command: psql -h postgres -U postgres -d bank -f /seed/data.sql
+    restart: "no"
+
+volumes:
+  postgres_data:

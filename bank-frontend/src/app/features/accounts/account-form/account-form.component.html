@@ -1,0 +1,142 @@
+<div class="form-page">
+  <!-- Header -->
+  <div class="form-page__header">
+    <h2 class="page__title">{{ isEditMode ? 'Edit Account' : 'New Account' }}</h2>
+    <button class="btn btn--secondary btn--icon" type="button" (click)="onCancel()" aria-label="Close">
+      &#x2715; Close
+    </button>
+  </div>
+
+  <!-- Skeleton overlay -->
+  <div class="form-page__body" style="position: relative;">
+    @if (loading || searchingCustomer) {
+      <app-skeleton [rows]="6"></app-skeleton>
+    }
+
+    <form class="account-form" [formGroup]="form" (ngSubmit)="onSave()" novalidate>
+
+      <!-- Customer lookup -->
+      <div class="form-group">
+        <label class="form-label">Customer <span class="required">*</span></label>
+        <div class="customer-search">
+          <div class="customer-search__input-wrapper">
+            <input
+              class="input customer-search__input"
+              [class.input--error]="isTouchedInvalid('customerId') && !selectedCustomer"
+              type="text"
+              maxlength="10"
+              placeholder="Enter ID Number to search"
+              [(ngModel)]="customerIdNumberInput"
+              [ngModelOptions]="{standalone: true}"
+            />
+            @if (customerIdNumberInput) {
+              <button class="customer-search__clear" type="button" aria-label="Clear customer" (click)="onClearCustomer()">
+                &#x2715;
+              </button>
+            }
+          </div>
+          <button class="btn btn--secondary" type="button" (click)="onSearchCustomer()">
+            Search
+          </button>
+          <button class="btn btn--primary" type="button" [disabled]="!foundCustomer" (click)="onSelectCustomer()">
+            Select
+          </button>
+        </div>
+        @if (foundCustomer) {
+          <div class="customer-found customer-found--pending">
+            <span class="customer-found__label">Found:</span>
+            <span class="customer-found__name">{{ foundCustomer.fullName }}</span>
+            <span class="customer-found__id">&mdash; {{ foundCustomer.idNumber }}</span>
+          </div>
+        }
+        @if (selectedCustomer) {
+          <div class="customer-found">
+            <span class="customer-found__label">Selected:</span>
+            <span class="customer-found__name">{{ selectedCustomer.fullName }}</span>
+            <span class="customer-found__id">&mdash; {{ selectedCustomer.idNumber }}</span>
+          </div>
+        }
+        @if (hasError('customerId', 'required') && !selectedCustomer) {
+          <span class="form-error">Customer is required. Search by ID Number.</span>
+        }
+      </div>
+
+      <!-- Number -->
+      <div class="form-group">
+        <label class="form-label" for="number">Account Number <span class="required">*</span></label>
+        <input id="number" class="input" [class.input--error]="isTouchedInvalid('number')"
+          type="text" maxlength="6" formControlName="number" />
+        @if (hasError('number', 'required')) {
+          <span class="form-error">Account number is required.</span>
+        }
+        @if (hasError('number', 'minlength') || hasError('number', 'maxlength')) {
+          <span class="form-error">Account number must be exactly 6 digits.</span>
+        }
+        @if (hasError('number', 'onlyDigits')) {
+          <span class="form-error">Only digits are allowed.</span>
+        }
+        @if (hasError('number', 'allZeros')) {
+          <span class="form-error">Account number cannot be all zeros.</span>
+        }
+      </div>
+
+      <!-- Type -->
+      <div class="form-group">
+        <label class="form-label" for="type">Type <span class="required">*</span></label>
+        <select id="type" class="select" [class.input--error]="isTouchedInvalid('type')"
+          formControlName="type">
+          @for (opt of typeOptions; track opt.value) {
+            <option [value]="opt.value">{{ opt.label }}</option>
+          }
+        </select>
+        @if (hasError('type', 'required')) {
+          <span class="form-error">Type is required.</span>
+        }
+      </div>
+
+      <!-- Initial Balance -->
+      <div class="form-group">
+        <label class="form-label" for="initialBalance">Initial Balance <span class="required">*</span></label>
+        <input id="initialBalance" class="input" [class.input--error]="isTouchedInvalid('initialBalance')"
+          type="number" step="0.01" formControlName="initialBalance" />
+        @if (hasError('initialBalance', 'required')) {
+          <span class="form-error">Initial balance is required.</span>
+        }
+        @if (hasError('initialBalance', 'min')) {
+          <span class="form-error">Minimum value is -999,999,999,999.99.</span>
+        }
+        @if (hasError('initialBalance', 'max')) {
+          <span class="form-error">Maximum value is 999,999,999,999.99.</span>
+        }
+        @if (hasError('initialBalance', 'twoDecimals')) {
+          <span class="form-error">Only up to 2 decimal places are allowed.</span>
+        }
+      </div>
+
+      <!-- Status -->
+      <div class="form-group form-group--inline">
+        <label class="form-label" for="status">Status</label>
+        <label class="toggle">
+          <input id="status" type="checkbox" formControlName="status" />
+          <span class="toggle__track"></span>
+          <span class="toggle__label">{{ form.get('status')?.value ? 'Enabled' : 'Disabled' }}</span>
+        </label>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button class="btn btn--primary" type="submit">Save</button>
+        <button class="btn btn--secondary" type="button" (click)="onCancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Error dialog -->
+  @if (errorMessage) {
+    <app-error-dialog
+      [message]="errorMessage"
+      [detail]="errorDetail"
+      (closed)="onCloseError()"
+    ></app-error-dialog>
+  }
+</div>

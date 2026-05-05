@@ -1,0 +1,9 @@
+<div class="dialog-backdrop" role="dialog" aria-modal="true" aria-labelledby="dialog-message">
+  <div class="dialog">
+    <p class="dialog__message" id="dialog-message">{{ message }}</p>
+    <div class="dialog__actions">
+      <button class="btn btn--primary" type="button" (click)="onAccept()">Accept</button>
+      <button class="btn btn--secondary" type="button" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+</div>

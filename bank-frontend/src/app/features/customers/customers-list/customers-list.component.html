@@ -1,0 +1,176 @@
+<div class="crud-page">
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button class="btn btn--primary" type="button" (click)="onCreate()">
+      + Create
+    </button>
+    <button class="btn btn--secondary" type="button" (click)="onRefresh()">
+      &#8635; Refresh
+    </button>
+    <div class="toolbar__page-size">
+      <label for="pageSize" class="toolbar__label">Page size:</label>
+      <select
+        id="pageSize"
+        class="select"
+        [value]="pageSize"
+        (change)="onPageSizeChange(+$any($event.target).value)"
+      >
+        @for (opt of pageSizeOptions; track opt) {
+          <option [value]="opt" [selected]="opt === pageSize">{{ opt }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <!-- Search bar -->
+  <div class="search-bar">
+    <div class="search-bar__wrapper">
+      <input
+        class="input input--search search-bar__input"
+        type="text"
+        maxlength="50"
+        placeholder="Search"
+        [value]="searchText"
+        (input)="onSearchChange($any($event.target).value)"
+        aria-label="Search customers"
+      />
+      @if (searchText) {
+        <button class="search-bar__clear" type="button" aria-label="Clear search" (click)="onSearchChange('')">
+          &#x2715;
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Content area (table + skeleton overlay) -->
+  <div class="table-wrapper" [class.table-wrapper--loading]="loading">
+    @if (loading) {
+      <app-skeleton [rows]="pageSize > 10 ? 10 : pageSize"></app-skeleton>
+    }
+
+    <!-- Grid -->
+    <table class="data-table" aria-label="Customers list">
+      <thead>
+        <tr>
+          <th class="data-table__th">Actions</th>
+          <th
+            class="data-table__th data-table__th--sortable"
+            [class.data-table__th--sorted]="isSortActive('id')"
+            (click)="onSort('id')"
+          >
+            Id <span class="sort-icon">{{ getSortIcon('id') }}</span>
+          </th>
+          <th
+            class="data-table__th data-table__th--sortable"
+            [class.data-table__th--sorted]="isSortActive('fullName')"
+            (click)="onSort('fullName')"
+          >
+            Full Name <span class="sort-icon">{{ getSortIcon('fullName') }}</span>
+          </th>
+          <th class="data-table__th">Gender</th>
+          <th class="data-table__th">Age</th>
+          <th
+            class="data-table__th data-table__th--sortable"
+            [class.data-table__th--sorted]="isSortActive('idNumber')"
+            (click)="onSort('idNumber')"
+          >
+            Id Number <span class="sort-icon">{{ getSortIcon('idNumber') }}</span>
+          </th>
+          <th class="data-table__th">Address</th>
+          <th class="data-table__th">Phone</th>
+          <th
+            class="data-table__th data-table__th--sortable"
+            [class.data-table__th--sorted]="isSortActive('username')"
+            (click)="onSort('username')"
+          >
+            Username <span class="sort-icon">{{ getSortIcon('username') }}</span>
+          </th>
+          <th class="data-table__th">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (customers.length === 0 && !loading) {
+          <tr>
+            <td class="data-table__empty" colspan="10">No customers found.</td>
+          </tr>
+        }
+        @for (customer of customers; track customer.id) {
+          <tr class="data-table__row">
+            <td class="data-table__td data-table__td--actions">
+              <button
+                class="btn btn--action btn--edit"
+                type="button"
+                (click)="onEdit(customer.id)"
+                aria-label="Edit customer"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn--action btn--delete"
+                type="button"
+                (click)="onDeleteRequest(customer.id)"
+                aria-label="Delete customer"
+              >
+                Delete
+              </button>
+            </td>
+            <td class="data-table__td">{{ customer.id }}</td>
+            <td class="data-table__td">{{ customer.fullName }}</td>
+            <td class="data-table__td">
+              <span class="badge" [class.badge--male]="customer.gender === 'MALE'" [class.badge--female]="customer.gender === 'FEMALE'">
+                {{ mapGender(customer.gender) }}
+              </span>
+            </td>
+            <td class="data-table__td">{{ customer.age }}</td>
+            <td class="data-table__td">{{ customer.idNumber }}</td>
+            <td class="data-table__td">{{ customer.address }}</td>
+            <td class="data-table__td">{{ customer.phone }}</td>
+            <td class="data-table__td">{{ customer.username }}</td>
+            <td class="data-table__td">
+              <span
+                class="badge"
+                [class.badge--active]="customer.status"
+                [class.badge--inactive]="!customer.status"
+              >{{ mapStatus(customer.status) }}</span>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <div class="pagination__side">
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage === 0" (click)="goToFirstPage()">&#8810; First</button>
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage === 0" (click)="goToPreviousPage()">&#8249; Prev</button>
+    </div>
+    <div class="pagination__center">
+      <span class="pagination__page">Page {{ currentPage + 1 }} / {{ totalPages || 1 }}</span>
+      <span class="pagination__separator">|</span>
+      <span class="pagination__total">{{ totalElements }} record(s)</span>
+    </div>
+    <div class="pagination__side">
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage >= totalPages - 1" (click)="goToNextPage()">Next &#8250;</button>
+      <button class="btn btn--secondary btn--action" type="button" [disabled]="currentPage >= totalPages - 1" (click)="goToLastPage()">Last &#8811;</button>
+    </div>
+  </div>
+
+  <!-- Delete confirmation dialog -->
+  @if (showDeleteConfirm) {
+    <app-confirm-dialog
+      message="Are you sure you want to delete this customer? This action cannot be undone."
+      (accepted)="onDeleteConfirmed()"
+      (cancelled)="onDeleteCancelled()"
+    ></app-confirm-dialog>
+  }
+
+  <!-- Error dialog -->
+  @if (errorMessage) {
+    <app-error-dialog
+      [message]="errorMessage"
+      [detail]="errorDetail"
+      (closed)="onCloseError()"
+    ></app-error-dialog>
+  }
+</div>

@@ -1,0 +1,3468 @@
+{
+  "info": {
+    "_postman_id": "0d841f4b-90ab-4b46-8928-14d3c630409f",
+    "name": "Bank",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27736099"
+  },
+  "item": [
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Query customers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customers/query?search=&sort_by=id&sort_direction=asc&page=0&size=10",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "query"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "sort_by",
+                  "value": "id"
+                },
+                {
+                  "key": "sort_direction",
+                  "value": "asc"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Customers queried 1",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/customers/query?page=0&size=5",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "489"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"fullName\": \"José Lema\",\n            \"gender\": \"MALE\",\n            \"age\": 21,\n            \"idNumber\": \"1234567890\",\n            \"address\": \"Otavalo SN y principal\",\n            \"phone\": \"098254785\",\n            \"username\": \"jose.lema\",\n            \"status\": true\n        }\n    ],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 5,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalElements\": 1,\n    \"totalPages\": 1,\n    \"size\": 5,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"first\": true,\n    \"numberOfElements\": 1,\n    \"empty\": false\n}"
+            },
+            {
+              "name": "Customers queried 2",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/customers/query?search=pedro&page=0&size=5",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "pedro"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "315"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"content\": [],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 5,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalElements\": 0,\n    \"totalPages\": 0,\n    \"size\": 5,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"first\": true,\n    \"numberOfElements\": 0,\n    \"empty\": true\n}"
+            },
+            {
+              "name": "Customers queried 3",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/customers/query?search=jose&sort_by=id&sort_direction=asc&page=0&size=5",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "jose"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "489"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"fullName\": \"José Lema\",\n            \"gender\": \"MALE\",\n            \"age\": 21,\n            \"idNumber\": \"1234567890\",\n            \"address\": \"Otavalo SN y principal\",\n            \"phone\": \"098254785\",\n            \"username\": \"jose.lema\",\n            \"status\": true\n        }\n    ],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 5,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalElements\": 1,\n    \"totalPages\": 1,\n    \"size\": 5,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"first\": true,\n    \"numberOfElements\": 1,\n    \"empty\": false\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get customer by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customers/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Customer gotten",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/customers/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "173"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"fullName\": \"José Lema\",\n    \"gender\": \"MALE\",\n    \"age\": 21,\n    \"idNumber\": \"1234567890\",\n    \"address\": \"Otavalo SN y principal\",\n    \"phone\": \"098254785\",\n    \"username\": \"jose.lema\",\n    \"status\": true\n}"
+            },
+            {
+              "name": "Customer not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/customers/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "123"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The customer was not found\",\n    \"errors\": [],\n    \"instance\": \"CME-0002\",\n    \"type\": \"/bank/v1/customers/1\"\n}"
+            },
+            {
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/customers/-1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "-1"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "217"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Bad input\",\n    \"detail\": \"The input data is invalid\",\n    \"errors\": [\n        {\n            \"message\": \"Bad Request\",\n            \"businessMessage\": \"getCustomerById.id must be greater than or equal to 1\"\n        }\n    ],\n    \"instance\": \"400\",\n    \"type\": \"/bank/v1/customers/-1\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get customer by ID number",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customers?id_number=1234567890",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers"
+              ],
+              "query": [
+                {
+                  "key": "id_number",
+                  "value": "1234567890"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Customer gotten",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/customers?id_number=1234567890",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "id_number",
+                      "value": "1234567890"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "173"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"fullName\": \"José Lema\",\n    \"gender\": \"MALE\",\n    \"age\": 21,\n    \"idNumber\": \"1234567890\",\n    \"address\": \"Otavalo SN y principal\",\n    \"phone\": \"098254785\",\n    \"username\": \"jose.lema\",\n    \"status\": true\n}"
+            },
+            {
+              "name": "Customer not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/customers?identification=1234567890",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "identification",
+                      "value": "1234567890"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "121"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The customer was not found\",\n    \"errors\": [],\n    \"instance\": \"CME-0002\",\n    \"type\": \"/bank/v1/customers\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create customer",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fullName\": \"José Lema\",\r\n    \"gender\": \"MALE\",\r\n    \"age\": 21,\r\n    \"idNumber\": \"1234567890\",\r\n    \"address\": \"Otavalo SN y principal\",\r\n    \"phone\": \"098254785\",\r\n    \"username\": \"jose.lema\",\r\n    \"password\": \"12341234\",\r\n    \"status\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/customers",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Customer created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"fullName\": \"José Lema\",\r\n    \"gender\": \"MALE\",\r\n    \"age\": 21,\r\n    \"idNumber\": \"1234567890\",\r\n    \"address\": \"Otavalo SN y principal\",\r\n    \"phone\": \"098254785\",\r\n    \"username\": \"jose.lema\",\r\n    \"password\": \"12341234\",\r\n    \"status\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/customers",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "123"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"fullName\": \"José Lema\",\n    \"address\": \"Otavalo SN y principal\",\n    \"phone\": \"098254785\",\n    \"password\": \"12341234\",\n    \"status\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update customer",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fullName\": \"José Lema\",\r\n    \"gender\": \"MALE\",\r\n    \"age\": 21,\r\n    \"idNumber\": \"1234567890\",\r\n    \"address\": \"Otavalo 124 y principal\",\r\n    \"phone\": \"098254785\",\r\n    \"username\": \"jose.lema\",\r\n    \"password\": \"12341234\",\r\n    \"status\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/customers/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Customer updated",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"fullName\": \"José Lema\",\r\n    \"gender\": \"MALE\",\r\n    \"age\": 21,\r\n    \"idNumber\": \"1234567890\",\r\n    \"address\": \"Otavalo 124 y principal\",\r\n    \"phone\": \"098254785\",\r\n    \"username\": \"jose.lema\",\r\n    \"password\": \"12341234\",\r\n    \"status\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/customers/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "174"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"fullName\": \"José Lema\",\n    \"gender\": \"MALE\",\n    \"age\": 21,\n    \"idNumber\": \"1234567890\",\n    \"address\": \"Otavalo 124 y principal\",\n    \"phone\": \"098254785\",\n    \"username\": \"jose.lema\",\n    \"status\": true\n}"
+            },
+            {
+              "name": "Customer not found",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"fullName\": \"José Lema\",\r\n    \"gender\": \"MALE\",\r\n    \"age\": 21,\r\n    \"idNumber\": \"1234567890\",\r\n    \"address\": \"Otavalo 124 y principal\",\r\n    \"phone\": \"098254785\",\r\n    \"username\": \"jose.lema\",\r\n    \"password\": \"12341234\",\r\n    \"status\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/customers/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "123"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The customer was not found\",\n    \"errors\": [],\n    \"instance\": \"CME-0002\",\n    \"type\": \"/bank/v1/customers/1\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update customer partially",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fullName\": \"José Lema Calderón\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/customers/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Customer updated partially",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"fullName\": \"José Lema Calderón\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/customers/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "184"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"fullName\": \"José Lema Calderón\",\n    \"gender\": \"MALE\",\n    \"age\": 21,\n    \"idNumber\": \"1234567890\",\n    \"address\": \"Otavalo 124 y principal\",\n    \"phone\": \"098254785\",\n    \"username\": \"jose.lema\",\n    \"status\": true\n}"
+            },
+            {
+              "name": "Customer not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"fullName\": \"José Lema Calderón\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/customers/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "123"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The customer was not found\",\n    \"errors\": [],\n    \"instance\": \"CME-0002\",\n    \"type\": \"/bank/v1/customers/1\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete customer",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/customers/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Customer deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/customers/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "184"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"fullName\": \"José Lema Calderón\",\n    \"gender\": \"MALE\",\n    \"age\": 21,\n    \"idNumber\": \"1234567890\",\n    \"address\": \"Otavalo 124 y principal\",\n    \"phone\": \"098254785\",\n    \"username\": \"jose.lema\",\n    \"status\": true\n}"
+            },
+            {
+              "name": "Customer not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/customers/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "customers",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "123"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The customer was not found\",\n    \"errors\": [],\n    \"instance\": \"CME-0002\",\n    \"type\": \"/bank/v1/customers/1\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Accounts",
+      "item": [
+        {
+          "name": "Query accounts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accounts/query?search=&sort_by=id&sort_direction=asc&page=0&size=10",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts",
+                "query"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "sort_by",
+                  "value": "id"
+                },
+                {
+                  "key": "sort_direction",
+                  "value": "asc"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Accounts queried 1",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/accounts/query?search=&sort_by=id&sort_direction=asc&page=0&size=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "660"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"customer\": {\n                \"id\": 1,\n                \"fullName\": \"José Lema\",\n                \"gender\": \"MALE\",\n                \"age\": 21,\n                \"idNumber\": \"1234567890\",\n                \"address\": \"Otavalo SN y principal\",\n                \"phone\": \"098254785\",\n                \"username\": \"jose.lema\",\n                \"status\": true\n            },\n            \"number\": \"000001\",\n            \"type\": \"SAVINGS\",\n            \"initialBalance\": 500,\n            \"balance\": 500,\n            \"dailyBalance\": 900,\n            \"dailyBalanceResetDate\": \"2026-05-03\",\n            \"status\": true\n        }\n    ],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 10,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalElements\": 1,\n    \"totalPages\": 1,\n    \"size\": 10,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"first\": true,\n    \"numberOfElements\": 1,\n    \"empty\": false\n}"
+            },
+            {
+              "name": "Accounts queried 2",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/accounts/query?search=jose&sort_by=id&sort_direction=asc&page=0&size=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "jose"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "659"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"customer\": {\n                \"id\": 1,\n                \"fullName\": \"Jose Lema\",\n                \"gender\": \"MALE\",\n                \"age\": 21,\n                \"idNumber\": \"1234567890\",\n                \"address\": \"Otavalo SN y principal\",\n                \"phone\": \"098254785\",\n                \"username\": \"jose.lema\",\n                \"status\": true\n            },\n            \"number\": \"000001\",\n            \"type\": \"SAVINGS\",\n            \"initialBalance\": 500,\n            \"balance\": 500,\n            \"dailyBalance\": 900,\n            \"dailyBalanceResetDate\": \"2026-05-03\",\n            \"status\": true\n        }\n    ],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 10,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalElements\": 1,\n    \"totalPages\": 1,\n    \"size\": 10,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"first\": true,\n    \"numberOfElements\": 1,\n    \"empty\": false\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get account by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accounts/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Account gotten",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/accounts/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "342"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"customer\": {\n        \"id\": 1,\n        \"fullName\": \"José Lema\",\n        \"gender\": \"MALE\",\n        \"age\": 21,\n        \"idNumber\": \"1234567890\",\n        \"address\": \"Otavalo SN y principal\",\n        \"phone\": \"098254785\",\n        \"username\": \"jose.lema\",\n        \"status\": true\n    },\n    \"number\": \"000001\",\n    \"type\": \"SAVINGS\",\n    \"initialBalance\": 500,\n    \"balance\": 500,\n    \"dailyBalance\": 900,\n    \"dailyBalanceResetDate\": \"2026-05-03\",\n    \"status\": true\n}"
+            },
+            {
+              "name": "Account not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/accounts/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "121"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The account was not found\",\n    \"errors\": [],\n    \"instance\": \"AME-0003\",\n    \"type\": \"/bank/v1/accounts/1\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get accounts by account number",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accounts?account_number=000001",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts"
+              ],
+              "query": [
+                {
+                  "key": "account_number",
+                  "value": "000001"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Accounts gotten",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/accounts?account_number=000001",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "key": "account_number",
+                      "value": "000001"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "344"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"customer\": {\n            \"id\": 1,\n            \"fullName\": \"José Lema\",\n            \"gender\": \"MALE\",\n            \"age\": 21,\n            \"idNumber\": \"1234567890\",\n            \"address\": \"Otavalo SN y principal\",\n            \"phone\": \"098254785\",\n            \"username\": \"jose.lema\",\n            \"status\": true\n        },\n        \"number\": \"000001\",\n        \"type\": \"SAVINGS\",\n        \"initialBalance\": 500,\n        \"balance\": 500,\n        \"dailyBalance\": 900,\n        \"dailyBalanceResetDate\": \"2026-05-03\",\n        \"status\": true\n    }\n]"
+            },
+            {
+              "name": "Accounts not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/accounts?account_number=000001",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "key": "account_number",
+                      "value": "000001"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "119"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The account was not found\",\n    \"errors\": [],\n    \"instance\": \"AME-0003\",\n    \"type\": \"/bank/v1/accounts\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get accounts by customer ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accounts?customer_id=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts"
+              ],
+              "query": [
+                {
+                  "key": "customer_id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Accounts gotten",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/accounts?customer_id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "key": "customer_id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "344"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": 1,\n        \"customer\": {\n            \"id\": 1,\n            \"fullName\": \"José Lema\",\n            \"gender\": \"MALE\",\n            \"age\": 21,\n            \"idNumber\": \"1234567890\",\n            \"address\": \"Otavalo SN y principal\",\n            \"phone\": \"098254785\",\n            \"username\": \"jose.lema\",\n            \"status\": true\n        },\n        \"number\": \"000001\",\n        \"type\": \"SAVINGS\",\n        \"initialBalance\": 500,\n        \"balance\": 500,\n        \"dailyBalance\": 900,\n        \"dailyBalanceResetDate\": \"2026-05-03\",\n        \"status\": true\n    }\n]"
+            },
+            {
+              "name": "Accounts not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/accounts?customer_id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ],
+                  "query": [
+                    {
+                      "key": "customer_id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "121"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The accounts were not found\",\n    \"errors\": [],\n    \"instance\": \"AME-0004\",\n    \"type\": \"/bank/v1/accounts\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create account",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"customerId\": 1,\r\n    \"number\": \"000001\",\r\n    \"type\": \"SAVINGS\",\r\n    \"initialBalance\": 500.00,\r\n    \"status\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/accounts",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Account created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"customerId\": 1,\r\n    \"number\": \"000001\",\r\n    \"type\": \"SAVINGS\",\r\n    \"initialBalance\": 500.00,\r\n    \"status\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/accounts",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "266"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"customer\": {\n        \"id\": 1,\n        \"fullName\": \"José Lema\",\n        \"gender\": \"MALE\",\n        \"age\": 21,\n        \"idNumber\": \"1234567890\",\n        \"address\": \"Otavalo SN y principal\",\n        \"phone\": \"098254785\",\n        \"username\": \"jose.lema\",\n        \"status\": true\n    },\n    \"number\": \"000001\",\n    \"type\": \"SAVINGS\",\n    \"initialBalance\": 500,\n    \"status\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update account",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"customerId\": 1,\r\n    \"number\": \"000001\",\r\n    \"type\": \"CURRENT\",\r\n    \"initialBalance\": 500.00,\r\n    \"status\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/accounts/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Account updated",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"customerId\": 1,\r\n    \"number\": \"000001\",\r\n    \"type\": \"CURRENT\",\r\n    \"initialBalance\": 500.00,\r\n    \"status\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/accounts/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "266"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"customer\": {\n        \"id\": 1,\n        \"fullName\": \"José Lema\",\n        \"gender\": \"MALE\",\n        \"age\": 21,\n        \"idNumber\": \"1234567890\",\n        \"address\": \"Otavalo SN y principal\",\n        \"phone\": \"098254785\",\n        \"username\": \"jose.lema\",\n        \"status\": true\n    },\n    \"number\": \"000001\",\n    \"type\": \"CURRENT\",\n    \"initialBalance\": 500,\n    \"status\": true\n}"
+            },
+            {
+              "name": "Account not found",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"customerId\": 1,\r\n    \"number\": \"000001\",\r\n    \"type\": \"CURRENT\",\r\n    \"initialBalance\": 500.00,\r\n    \"status\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/accounts/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "121"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The account was not found\",\n    \"errors\": [],\n    \"instance\": \"AME-0003\",\n    \"type\": \"/bank/v1/accounts/1\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update account partially",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"type\": \"SAVINGS\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/accounts/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Account updated partially",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"type\": \"SAVINGS\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/accounts/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "266"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"customer\": {\n        \"id\": 1,\n        \"fullName\": \"José Lema\",\n        \"gender\": \"MALE\",\n        \"age\": 21,\n        \"idNumber\": \"1234567890\",\n        \"address\": \"Otavalo SN y principal\",\n        \"phone\": \"098254785\",\n        \"username\": \"jose.lema\",\n        \"status\": true\n    },\n    \"number\": \"000001\",\n    \"type\": \"SAVINGS\",\n    \"initialBalance\": 500,\n    \"status\": true\n}"
+            },
+            {
+              "name": "Account not found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"type\": \"SAVINGS\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/accounts/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "121"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The account was not found\",\n    \"errors\": [],\n    \"instance\": \"AME-0003\",\n    \"type\": \"/bank/v1/accounts/1\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete account",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/accounts/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "accounts",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Account deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/accounts/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "266"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"customer\": {\n        \"id\": 1,\n        \"fullName\": \"José Lema\",\n        \"gender\": \"MALE\",\n        \"age\": 21,\n        \"idNumber\": \"1234567890\",\n        \"address\": \"Otavalo SN y principal\",\n        \"phone\": \"098254785\",\n        \"username\": \"jose.lema\",\n        \"status\": true\n    },\n    \"number\": \"000001\",\n    \"type\": \"SAVINGS\",\n    \"initialBalance\": 500,\n    \"status\": true\n}"
+            },
+            {
+              "name": "Account not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/accounts/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "accounts",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "121"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The account was not found\",\n    \"errors\": [],\n    \"instance\": \"AME-0003\",\n    \"type\": \"/bank/v1/accounts/2\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Query transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/transactions/query?search=&sort_by=id&sort_direction=asc&page=0&size=10",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "transactions",
+                "query"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "sort_by",
+                  "value": "id"
+                },
+                {
+                  "key": "sort_direction",
+                  "value": "asc"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Transactions queried 1",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/transactions/query?search=&sort_by=id&sort_direction=asc&page=0&size=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "transactions",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": ""
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1272"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"account\": {\n                \"id\": 1,\n                \"customer\": {\n                    \"id\": 1,\n                    \"fullName\": \"Jose Lema\",\n                    \"gender\": \"MALE\",\n                    \"age\": 21,\n                    \"idNumber\": \"1234567890\",\n                    \"address\": \"Otavalo SN y principal\",\n                    \"phone\": \"098254785\",\n                    \"username\": \"jose.lema\",\n                    \"status\": true\n                },\n                \"number\": \"000001\",\n                \"type\": \"SAVINGS\",\n                \"initialBalance\": 500,\n                \"balance\": 500,\n                \"dailyBalance\": 900,\n                \"dailyBalanceResetDate\": \"2026-05-03\",\n                \"status\": true\n            },\n            \"date\": \"2026-05-03\",\n            \"type\": \"CREDIT\",\n            \"value\": 100,\n            \"description\": \"Credit transaction\",\n            \"balance\": 600,\n            \"status\": true\n        },\n        {\n            \"id\": 2,\n            \"account\": {\n                \"id\": 1,\n                \"customer\": {\n                    \"id\": 1,\n                    \"fullName\": \"Jose Lema\",\n                    \"gender\": \"MALE\",\n                    \"age\": 21,\n                    \"idNumber\": \"1234567890\",\n                    \"address\": \"Otavalo SN y principal\",\n                    \"phone\": \"098254785\",\n                    \"username\": \"jose.lema\",\n                    \"status\": true\n                },\n                \"number\": \"000001\",\n                \"type\": \"SAVINGS\",\n                \"initialBalance\": 500,\n                \"balance\": 500,\n                \"dailyBalance\": 900,\n                \"dailyBalanceResetDate\": \"2026-05-03\",\n                \"status\": true\n            },\n            \"date\": \"2026-05-03\",\n            \"type\": \"DEBIT\",\n            \"value\": -100,\n            \"description\": \"Debit transaction\",\n            \"balance\": 500,\n            \"status\": true\n        }\n    ],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 10,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"unpaged\": false,\n        \"paged\": true\n    },\n    \"last\": true,\n    \"totalElements\": 2,\n    \"totalPages\": 1,\n    \"first\": true,\n    \"size\": 10,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"numberOfElements\": 2,\n    \"empty\": false\n}"
+            },
+            {
+              "name": "Transactions queried 2",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/transactions/query?search=100&sort_by=id&sort_direction=asc&page=0&size=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "transactions",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "100"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1272"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"account\": {\n                \"id\": 1,\n                \"customer\": {\n                    \"id\": 1,\n                    \"fullName\": \"Jose Lema\",\n                    \"gender\": \"MALE\",\n                    \"age\": 21,\n                    \"idNumber\": \"1234567890\",\n                    \"address\": \"Otavalo SN y principal\",\n                    \"phone\": \"098254785\",\n                    \"username\": \"jose.lema\",\n                    \"status\": true\n                },\n                \"number\": \"000001\",\n                \"type\": \"SAVINGS\",\n                \"initialBalance\": 500,\n                \"balance\": 500,\n                \"dailyBalance\": 900,\n                \"dailyBalanceResetDate\": \"2026-05-03\",\n                \"status\": true\n            },\n            \"date\": \"2026-05-03\",\n            \"type\": \"CREDIT\",\n            \"value\": 100,\n            \"description\": \"Credit transaction\",\n            \"balance\": 600,\n            \"status\": true\n        },\n        {\n            \"id\": 2,\n            \"account\": {\n                \"id\": 1,\n                \"customer\": {\n                    \"id\": 1,\n                    \"fullName\": \"Jose Lema\",\n                    \"gender\": \"MALE\",\n                    \"age\": 21,\n                    \"idNumber\": \"1234567890\",\n                    \"address\": \"Otavalo SN y principal\",\n                    \"phone\": \"098254785\",\n                    \"username\": \"jose.lema\",\n                    \"status\": true\n                },\n                \"number\": \"000001\",\n                \"type\": \"SAVINGS\",\n                \"initialBalance\": 500,\n                \"balance\": 500,\n                \"dailyBalance\": 900,\n                \"dailyBalanceResetDate\": \"2026-05-03\",\n                \"status\": true\n            },\n            \"date\": \"2026-05-03\",\n            \"type\": \"DEBIT\",\n            \"value\": -100,\n            \"description\": \"Debit transaction\",\n            \"balance\": 500,\n            \"status\": true\n        }\n    ],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 10,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalElements\": 2,\n    \"totalPages\": 1,\n    \"size\": 10,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"first\": true,\n    \"numberOfElements\": 2,\n    \"empty\": false\n}"
+            },
+            {
+              "name": "Transactions queried 3",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/transactions/query?search=X&sort_by=id&sort_direction=asc&page=0&size=10",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "transactions",
+                    "query"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "X"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "asc"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "317"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"content\": [],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 10,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalElements\": 0,\n    \"totalPages\": 0,\n    \"size\": 10,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"first\": true,\n    \"numberOfElements\": 0,\n    \"empty\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get transaction by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/transactions/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "transactions",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Transaction gotten",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/transactions/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "transactions",
+                    "1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "478"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"account\": {\n        \"id\": 1,\n        \"customer\": {\n            \"id\": 1,\n            \"fullName\": \"José Lema\",\n            \"gender\": \"MALE\",\n            \"age\": 21,\n            \"idNumber\": \"1234567890\",\n            \"address\": \"Otavalo SN y principal\",\n            \"phone\": \"098254785\",\n            \"username\": \"jose.lema\",\n            \"status\": true\n        },\n        \"number\": \"000001\",\n        \"type\": \"SAVINGS\",\n        \"initialBalance\": 500,\n        \"balance\": 500,\n        \"dailyBalance\": 900,\n        \"dailyBalanceResetDate\": \"2026-05-03\",\n        \"status\": true\n    },\n    \"date\": \"2026-05-03\",\n    \"type\": \"CREDIT\",\n    \"value\": 100,\n    \"description\": \"Credit transaction\",\n    \"balance\": 600,\n    \"status\": true\n}"
+            },
+            {
+              "name": "Transaction not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/transactions/1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "transactions",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "content-length",
+                  "value": "129"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"title\": \"Not found\",\n    \"detail\": \"The transaction was not found\",\n    \"errors\": [],\n    \"instance\": \"TME-0002\",\n    \"type\": \"/bank/v1/transactions/1\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create credit transaction",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"accountNumber\": \"000001\",\r\n    \"value\": 100.00,\r\n    \"description\": \"Credit transaction\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/transactions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "transactions"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Credit transaction created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"accountNumber\": \"000001\",\r\n    \"value\": 100.00,\r\n    \"description\": \"Credit transaction\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/transactions",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "transactions"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "478"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"account\": {\n        \"id\": 1,\n        \"customer\": {\n            \"id\": 1,\n            \"fullName\": \"José Lema\",\n            \"gender\": \"MALE\",\n            \"age\": 21,\n            \"idNumber\": \"1234567890\",\n            \"address\": \"Otavalo SN y principal\",\n            \"phone\": \"098254785\",\n            \"username\": \"jose.lema\",\n            \"status\": true\n        },\n        \"number\": \"000001\",\n        \"type\": \"SAVINGS\",\n        \"initialBalance\": 500,\n        \"balance\": 600,\n        \"dailyBalance\": 900,\n        \"dailyBalanceResetDate\": \"2026-05-03\",\n        \"status\": true\n    },\n    \"date\": \"2026-05-03\",\n    \"type\": \"CREDIT\",\n    \"value\": 100,\n    \"description\": \"Credit transaction\",\n    \"balance\": 600,\n    \"status\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create debit transaction",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"accountNumber\": \"000001\",\r\n    \"value\": -100.00,\r\n    \"description\": \"Debit transaction\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/transactions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "transactions"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Debit transaction created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"accountNumber\": \"000001\",\r\n    \"value\": -100.00,\r\n    \"description\": \"Debit transaction\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/transactions",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "transactions"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "477"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 2,\n    \"account\": {\n        \"id\": 1,\n        \"customer\": {\n            \"id\": 1,\n            \"fullName\": \"José Lema\",\n            \"gender\": \"MALE\",\n            \"age\": 21,\n            \"idNumber\": \"1234567890\",\n            \"address\": \"Otavalo SN y principal\",\n            \"phone\": \"098254785\",\n            \"username\": \"jose.lema\",\n            \"status\": true\n        },\n        \"number\": \"000001\",\n        \"type\": \"SAVINGS\",\n        \"initialBalance\": 500,\n        \"balance\": 500,\n        \"dailyBalance\": 900,\n        \"dailyBalanceResetDate\": \"2026-05-03\",\n        \"status\": true\n    },\n    \"date\": \"2026-05-03\",\n    \"type\": \"DEBIT\",\n    \"value\": -100,\n    \"description\": \"Debit transaction\",\n    \"balance\": 500,\n    \"status\": true\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Get bank statement",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/reports/bank-statements/1?start_date=2026-05-01&end_date=2026-05-31&page=0&size=5",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reports",
+                "bank-statements",
+                "1"
+              ],
+              "query": [
+                {
+                  "key": "start_date",
+                  "value": "2026-05-01"
+                },
+                {
+                  "key": "end_date",
+                  "value": "2026-05-31"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Bank statement gotten 1",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/reports/bank-statements/1?start_date=2026-05-01&end_date=2026-05-31&page=0&size=5",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "reports",
+                    "bank-statements",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "2026-05-01"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2026-05-31"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "634"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"content\": [\n        {\n            \"id\": 2,\n            \"date\": \"2026-05-03\",\n            \"customer\": \"José Lema\",\n            \"accountNumber\": \"000001\",\n            \"type\": \"D\",\n            \"initialBalance\": 500,\n            \"status\": true,\n            \"value\": -100,\n            \"balance\": 500\n        },\n        {\n            \"id\": 1,\n            \"date\": \"2026-05-03\",\n            \"customer\": \"José Lema\",\n            \"accountNumber\": \"000001\",\n            \"type\": \"C\",\n            \"initialBalance\": 500,\n            \"status\": true,\n            \"value\": 100,\n            \"balance\": 600\n        }\n    ],\n    \"pageable\": {\n        \"pageNumber\": 0,\n        \"pageSize\": 5,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalElements\": 2,\n    \"totalPages\": 1,\n    \"size\": 5,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"first\": true,\n    \"numberOfElements\": 2,\n    \"empty\": false\n}"
+            },
+            {
+              "name": "Bank statement gotten 2",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/reports/bank-statements/1?start_date=2026-05-01&end_date=2026-05-31&page=1&size=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "reports",
+                    "bank-statements",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "2026-05-01"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2026-05-31"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "size",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "475"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"content\": [\n        {\n            \"id\": 1,\n            \"date\": \"2026-05-03\",\n            \"customer\": \"José Lema\",\n            \"accountNumber\": \"000001\",\n            \"type\": \"C\",\n            \"initialBalance\": 500,\n            \"status\": true,\n            \"value\": 100,\n            \"balance\": 600\n        }\n    ],\n    \"pageable\": {\n        \"pageNumber\": 1,\n        \"pageSize\": 1,\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 1,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": true,\n    \"totalElements\": 2,\n    \"totalPages\": 2,\n    \"size\": 1,\n    \"number\": 1,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"first\": false,\n    \"numberOfElements\": 1,\n    \"empty\": false\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get bank statement PDF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/reports/bank-statements/1/pdf?start_date=2026-05-01&end_date=2026-05-31",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reports",
+                "bank-statements",
+                "1",
+                "pdf"
+              ],
+              "query": [
+                {
+                  "key": "start_date",
+                  "value": "2026-05-01"
+                },
+                {
+                  "key": "end_date",
+                  "value": "2026-05-31"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Bank statement PDF gotten",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/reports/bank-statements/1/pdf?start_date=2026-05-01&end_date=2026-05-31",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "reports",
+                    "bank-statements",
+                    "1",
+                    "pdf"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "2026-05-01"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2026-05-31"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "16832"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                }
+              ],
+              "cookie": [],
+              "body": "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R8yWfTUtZLaaJTLJbNlqf4BM3NDj/77ymoM1ojlW9hxjShzlmHK1Jmr0mKMe5rBWyfSJHxhbzGIKZW5kc3RyZWFtCmVuZG9iagoyIDAgb2JqCjw8L1N1YnR5cGUvVHlwZTAvVHlwZS9Gb250L0Jhc2VGb250L0pHRldMSCtMaWJlcmF0aW9uU2Fucy9FbmNvZGluZy9JZGVudGl0eS1IL0Rlc2NlbmRhbnRGb250c1s5IDAgUl0vVG9Vbmljb2RlIDEwIDAgUj4+CmVuZG9iagozIDAgb2JqCjw8L1N1YnR5cGUvVHlwZTEvVHlwZS9Gb250L0Jhc2VGb250L0hlbHZldGljYS9FbmNvZGluZy9XaW5BbnNpRW5jb2Rpbmc+PgplbmRvYmoKNSAwIG9iago8PC9LaWRzWzYgMCBSXS9UeXBlL1BhZ2VzL0NvdW50IDE+PgplbmRvYmoKMTEgMCBvYmoKPDwvVHlwZS9DYXRhbG9nL1BhZ2VzIDUgMCBSPj4KZW5kb2JqCjEyIDAgb2JqCjw8L01vZERhdGUoRDoyMDI2MDUwNDAxMTM0MC0wNScwMCcpL0NyZWF0aW9uRGF0ZShEOjIwMjYwNTA0MDExMzQwLTA1JzAwJykvUHJvZHVjZXIoT3BlblBERiAxLjMuMzApPj4KZW5kb2JqCnhyZWYKMCAxMwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDA0NjkgMDAwMDAgbiAKMDAwMDAxMTc3NCAwMDAwMCBuIAowMDAwMDExOTA5IDAwMDAwIG4gCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAxMTk5NyAwMDAwMCBuIAowMDAwMDAwMzM5IDAwMDAwIG4gCjAwMDAwMDA1NjIgMDAwMDAgbiAKMDAwMDAxMDgxNSAwMDAwMCBuIAowMDAwMDExMDAxIDAwMDAwIG4gCjAwMDAwMTEzNDkgMDAwMDAgbiAKMDAwMDAxMjA0OCAwMDAwMCBuIAowMDAwMDEyMDk0IDAwMDAwIG4gCnRyYWlsZXIKPDwvSW5mbyAxMiAwIFIvSUQgWzw1MWRiMmE4NDY3OTIxYmFiZTg0MjIxMTM5YTE4ZWIzNz48NTkzZmQ3NWQ0MjJjZDBiZmUyNDMyZTA2NjE5NTkwZWI+XS9Sb290IDExIDAgUi9TaXplIDEzPj4Kc3RhcnR4cmVmCjEyMjExCiUlRU9GCg=="
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    }
+  ]
+}
